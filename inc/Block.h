@@ -1,23 +1,23 @@
-#ifndef HEADERFILE_H
-#define HEADERFILE_H
+#ifndef BLOCK_H
+#define BLOCK_H
 
 #include "../inc/common.h"
+#include "../inc/variables.h"
 
 class Block
 {
 private:
     
-    std::vector<int> vecSize, vecPos;
-    int iTemp;
+    blockPos pos;
+    blockSize size;
     
 public:
     
     Block();
-    int getVecSize(int xy);
-    int getVecPos(int xy);
-    void setVecSize(int xy, int value);
-    void setVecPos(int xy, int value);
+    Block(int x, int y, int width, int height);
     
+    blockPos getBlockPos();
+    blockSize getBlockSize();
 };
 
 #endif

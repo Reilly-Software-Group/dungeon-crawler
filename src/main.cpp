@@ -1,6 +1,7 @@
 #include "../inc/common.h"
 #include "../inc/Grid.h"
 #include "../inc/Block.h"
+#include "../inc/variables.h"
 
 int main()
 {
@@ -60,10 +61,11 @@ int main()
         
         while(iTemp != vecBlock.size())
         {
-            if()
+            if(1)
             {
-                vecBlock.push_back(Block());
-                vecBlock[0].setVecPos(0, 5);
+                vecBlock.push_back(Block(5, 4, 3, 2));
+                //vecBlock[0].setVecPos(0, 5);
+                std::cout << vecBlock[iCount].getBlockPos().x;
                 iCount ++;
             }
             
