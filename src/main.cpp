@@ -13,6 +13,7 @@ int main()
     int x = 0, y = 0, width = 32, height = 32;
     
     std::vector<Block> vecBlock;
+    std::string strTemp;
     
     while (iTemp == 0)
     {
@@ -37,44 +38,30 @@ int main()
             std::cout << std::endl << "ERROR: Cannot find file with the name: " << input << std::endl;
         }
         
-        /*
-        int getVecSize(int xy);
-        int getVecPos(int xy);
-        void setVecSize(int xy, int value);
-        void setVecPos(int xy, int value);
-        */
-        
-        /*
-        block.setVecSize(0, 5);
-        block.setVecSize(1, 10);
-        block.setVecPos(0, 3);
-        block.setVecPos(1, 4);
-        
-        std::cout << std::endl << block.getVecPos(0) << std::endl << block.getVecPos(1) << std::endl;
-        std::cout << std::endl << block.getVecSize(0) << std::endl << block.getVecSize(1) << std::endl;
-        */
-        
-        //std::cout << std::endl << map.getVecSize();
-        
         iTemp = map.getVecSize();
         iCount = 0;
         
-        std::cout << std::endl << "A single Element: " << map.getVecMap(0)[4] << std::endl;
-        
-        while(iTemp != vecBlock.size())
+        while(vecBlock.size() <= iTemp)
         {
-            if(1)
+            strTemp = map.getVecMap(iCount);
+            
+            for(int i = 0; i < strTemp.size(); i++)
             {
-                vecBlock.push_back(Block(5, 4, 3, 2));
-                //vecBlock[0].setVecPos(0, 5);
-                std::cout << vecBlock[iCount].getBlockPos().x;
+                vecBlock.push_back(Block(5, 5, 0, 0));
+                
+                if(strTemp[iCount] == 1)
+                {
+                    vecBlock[iCount].setBlockType("wall");
+                }
+                else if(strTemp[iCount] == 0)
+                {
+                    vecBlock[iCount].setBlockType("floor");
+                }
+                std::cout << " " << vecBlock[iCount].getBlockType() << " ";
                 iCount ++;
             }
-            
+            std::cout << std::endl;
         }
-        
-        //vecBlock[0].setVecPos(0, 5);
-        //std::cout << std::endl << vecBlock[0].getVecPos(0);
     }
     
     return 0;

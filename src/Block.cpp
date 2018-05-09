@@ -21,3 +21,6 @@ Block::Block(int x, int y, int width, int height)
 
 blockPos Block::getBlockPos(){return pos;}
 blockSize Block::getBlockSize(){return size;}
+
+void Block::setBlockType(std::string input){blockType = input;}
+std::string Block::getBlockType(){return blockType;}

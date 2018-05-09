@@ -10,6 +10,7 @@ private:
     
     blockPos pos;
     blockSize size;
+    std::string blockType;
     
 public:
     
@@ -18,6 +19,9 @@ public:
     
     blockPos getBlockPos(); // return the position of object
     blockSize getBlockSize(); // return the size of object
+    
+    void setBlockType(std::string input);
+    std::string getBlockType();
 };
 
 #endif
