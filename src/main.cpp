@@ -1,11 +1,11 @@
 #include "../inc/common.h"
-#include "../inc/Grid.h"
+#include "../inc/Map.h"
 #include "../inc/Block.h"
 #include "../inc/variables.h"
 
 int main()
 {
-    Grid grid;
+    Map map;
     //Block block;
     
     std::string input;
@@ -26,10 +26,10 @@ int main()
             std::cout << std::endl;
         }
         
-        if(grid.testFileStream(input) == 1)
+        if(map.testFileStream(input) == 1)
         {
-            grid.setMapName(input);
-            grid.fillVecGrid();
+            map.setMapName(input);
+            map.fillVecMap();
             iTemp = 1;
         }
         else
@@ -54,10 +54,12 @@ int main()
         std::cout << std::endl << block.getVecSize(0) << std::endl << block.getVecSize(1) << std::endl;
         */
         
-        //std::cout << std::endl << grid.getVecSize();
+        //std::cout << std::endl << map.getVecSize();
         
-        iTemp = grid.getVecSize();
+        iTemp = map.getVecSize();
         iCount = 0;
+        
+        std::cout << std::endl << "A single Element: " << map.getVecMap(0)[4] << std::endl;
         
         while(iTemp != vecBlock.size())
         {

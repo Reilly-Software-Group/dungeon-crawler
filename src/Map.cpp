@@ -1,16 +1,16 @@
-#include "../inc/Grid.h"
+#include "../inc/Map.h"
 
-Grid::Grid()
+Map::Map()
 {
     iCount = 0;
 }
 
-std::string Grid::getMapName()
+std::string Map::getMapName()
 {
     return strMapName;
 }
 
-int Grid::setMapName(std::string strMapN)
+int Map::setMapName(std::string strMapN)
 {
     if(1 == 1)
     {
@@ -22,7 +22,7 @@ int Grid::setMapName(std::string strMapN)
     return 0;
 }
 
-int Grid::testFileStream(std::string strMapN)
+int Map::testFileStream(std::string strMapN)
 {
     fileIn.open(strMapN);
     if(fileIn.is_open())
@@ -35,41 +35,41 @@ int Grid::testFileStream(std::string strMapN)
     return 0;
 }
 
-void Grid::fillVecGrid()
+void Map::fillVecMap()
 {
     fileIn.open(strMapName);
     
     while(fileIn >> strTemp)
     {
         //fileIn >> strTemp;
-        vecGrid.push_back(strTemp);
-        std::cout << vecGrid[iCount] << std::endl;
+        vecMap.push_back(strTemp);
+        std::cout << vecMap[iCount] << std::endl;
         iCount ++;
     }
     
     fileIn.close();
 }
 
-std::string Grid::getVecGrid(int count)
+std::string Map::getVecMap(int count)
 {
-    strTemp = vecGrid[count];
+    strTemp = vecMap[count];
     return strTemp;
 }
 
-void Grid::setVecGrid(int count)
+void Map::setVecMap(int count)
 {
     if(1 == 1)
     {
-        vecGrid[count] = strTemp;
+        vecMap[count] = strTemp;
     }
 }
 
-int Grid::getVecSize()
+int Map::getVecSize()
 {
     iCount = 0;
-    for(int i = 0; i < vecGrid.size(); i++)
+    for(int i = 0; i < vecMap.size(); i++)
     {
-        strTemp = vecGrid[i];
+        strTemp = vecMap[i];
         iCount = iCount + strTemp.size();
     }
     return iCount;

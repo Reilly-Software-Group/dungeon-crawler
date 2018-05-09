@@ -16,8 +16,8 @@ public:
     Block();
     Block(int x, int y, int width, int height);
     
-    blockPos getBlockPos();
-    blockSize getBlockSize();
+    blockPos getBlockPos(); // return the position of object
+    blockSize getBlockSize(); // return the size of object
 };
 
 #endif
