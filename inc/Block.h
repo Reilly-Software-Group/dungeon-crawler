@@ -15,7 +15,7 @@ private:
 public:
     
     Block();
-    Block(int x, int y, int width, int height);
+    Block(int x, int y, int width, int height, std::string blktpe);
     
     blockPos getBlockPos(); // return the position of object
     blockSize getBlockSize(); // return the size of object

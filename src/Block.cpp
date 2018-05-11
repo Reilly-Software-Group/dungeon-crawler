@@ -8,15 +8,19 @@ Block::Block()
     
     size.width = 0;
     size.height = 0;
+    
+    blockType = "wall";
 }
 
-Block::Block(int x, int y, int width, int height)
+Block::Block(int x, int y, int width, int height, std::string blktpe)
 {
     pos.x = x;
     pos.y = y;
     
     size.width = width;
     size.height = height;
+    
+    blockType = blktpe;
 }
 
 blockPos Block::getBlockPos(){return pos;}

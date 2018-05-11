@@ -3,18 +3,29 @@
 #include "../inc/Block.h"
 #include "../inc/variables.h"
 
+void setUpMapName();
+void setUpVecBlock();
+
+Map map;
+
+std::vector<Block> vecBlock;
+const int width = 32, height = 32;
+
 int main()
 {
-    Map map;
-    //Block block;
-    
-    std::string input;
-    int iTemp = 0, iCount = 0;
-    int x = 0, y = 0, width = 32, height = 32;
-    
-    std::vector<Block> vecBlock;
-    std::string strTemp;
-    
+	int x = 0, y = 0;
+	
+	setUpMapName();
+	setUpVecBlock(vecBlock);
+	
+	return 0;
+}
+
+void setUpMapName()
+{
+	int iTemp = 0;
+	std::string input;
+	
     while (iTemp == 0)
     {
         
@@ -35,35 +46,46 @@ int main()
         }
         else
         {
-            std::cout << std::endl << "ERROR: Cannot find file with the name: " << input << std::endl;
-        }
-        
-        iTemp = map.getVecSize();
-        iCount = 0;
-        
-        while(vecBlock.size() <= iTemp)
-        {
-            strTemp = map.getVecMap(iCount);
-            
-            for(int i = 0; i < strTemp.size(); i++)
-            {
-                vecBlock.push_back(Block(5, 5, 0, 0));
-                
-                if(strTemp[iCount] == 1)
-                {
-                    vecBlock[iCount].setBlockType("wall");
-                }
-                else if(strTemp[iCount] == 0)
-                {
-                    vecBlock[iCount].setBlockType("floor");
-                }
-                std::cout << " " << vecBlock[iCount].getBlockType() << " ";
-                iCount ++;
-            }
-            std::cout << std::endl;
+            iTemp = 0;
+			std::cout << std::endl << "ERROR: Cannot find file with the name: " << input << std::endl;
         }
     }
+}
+
+void setUpVecBlock(std::vector<Block> vecBlock)
+{
+	int iTemp = 0, iCount = 0;
+	std::string strTemp;
+	
+    iTemp = map.getVecSize();
     
-    return 0;
+    strTemp = map.getVecMap(0);
     
+    for(int i = 0; i < iTemp; i++)
+    {
+        if((i % strTemp.size()) == 0 && i != 0)
+        {
+            iCount++;
+            std::cout << " iCount = " << iCount << " ";
+            strTemp = map.getVecMap(iCount);
+            std::cout << std::endl;
+        }
+        
+        if(strTemp[i % strTemp.size()] == '1')
+        {
+            vecBlock.push_back(Block(5, 5, 0, 0, "wall"));
+        }
+        else if(strTemp[i % strTemp.size()] == '0')
+        {
+            vecBlock.push_back(Block(5, 5, 0, 0, "floor"));
+        }
+        else if(strTemp[i % strTemp.size()] == '@')
+        {
+            vecBlock.push_back(Block(5, 5, 0, 0, "Player"));
+        }
+        
+        //std::cout << " i = " << i % strTemp.size() << " ";
+        
+        std::cout << vecBlock[i].getBlockType();
+    }
 }
