@@ -12,7 +12,7 @@ std::string Map::getMapName()
 
 int Map::setMapName(std::string strMapN)
 {
-    if(1 == 1)
+    if(testFileStream(strMapN) == 1)
     {
         strMapName = strMapN;
         
