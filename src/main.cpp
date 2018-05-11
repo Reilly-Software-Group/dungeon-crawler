@@ -3,16 +3,26 @@
 #include "../inc/Block.h"
 #include "../inc/variables.h"
 
+// object pit
+Map map;
+std::vector<Block> vecBlock;
+
+void setUp();
+
 int main()
 {
+	// function call pit
+	setUp();
+	
+	return 0;
+}
+
+void setUp()
+{
 	// variable pit
-	int iCorrectIn = 0, iVecMapElemSize = 0, iVecMapPos = 0, iX = 0, iY = 0;
+	int iCorrectIn = 0, iVecMapSize = 0, iVecMapPos = 0, iX = 0, iY = 0;
 	const int iWidth = 32, iHeight = 32;
 	std::string strInput, strVecMapElem;
-	std::vector<Block> vecBlock;
-	
-	// object pit
-	Map map;
 	
 	// file name loop
 	while(iCorrectIn != 1)
@@ -34,11 +44,11 @@ int main()
 	
 	// prep for vecBlock setup
 	map.fillVecMap();
-	iVecMapElemSize = map.getVecSize();
+	iVecMapSize = map.getVecSize();
 	strVecMapElem = map.getVecMap(0);
 	
 	// vecBlock setup
-	for(int i = 0; i < iVecMapPos; i++)
+	for(int i = 0; i < iVecMapSize; i++)
 	{
 		// if the last character of the vecMap element is reached then move to the next element
 		if((i % strVecMapElem.size()) == 0 && i != 0)
@@ -46,7 +56,7 @@ int main()
 			iVecMapPos ++;
 			iX = iX + 32;
 			strVecMapElem = map.getVecMap(iVecMapPos);
-			std::cout << std::endl;
+			//std::cout << std::endl;
 		}
 		
 		// check the character and decide what it will be in the vector
@@ -65,10 +75,7 @@ int main()
             vecBlock.push_back(Block(iX, iY, iWidth, iHeight, "Player"));
 			iY = iY + 32;
         }
-        
-		std::cout << " X = " << iX << " Y = " << iY;
 		
 	}
 	
-	return 0;
 }
