@@ -33,6 +33,7 @@ int main()
 	}
 	
 	// prep for vecBlock setup
+	map.fillVecMap();
 	iVecMapElemSize = map.getVecSize();
 	strVecMapElem = map.getVecMap(0);
 	
@@ -65,7 +66,7 @@ int main()
 			iY = iY + 32;
         }
         
-		std::cout << "X = " << iX << " Y = " << iY;
+		std::cout << " X = " << iX << " Y = " << iY;
 		
 	}
 	
